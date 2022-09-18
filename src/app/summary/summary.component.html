@@ -1,0 +1,38 @@
+<div class="summary">
+    <h1>Good morning<span *ngIf="user$ | async as user">, {{user.name}}</span></h1>
+
+    <div style="display: flex ; justify-content: space-between; margin-top: 70px;  min-width: 300px; max-width: 921px;">
+        <div class="time-date">
+    
+            <div class="time">
+                <div><img src="./assets/img/clock.png"><span>{{urgentTasks}}</span></div>
+                <div style="margin-top: 30px;"><span style="font-size: 23px;">Tasks urgent</span></div>
+            </div>
+            <div><span>October 16, 2022</span><br>
+                <div style="margin-top: 30px;"><span style="font-size: 23px;">Upcoming Deadline</span></div>
+            </div>
+        </div>
+        <div style="margin-left: 20px !important; background-color: #D2E3FF;" class="status">
+            <div><img src="./assets/img/BoardIcon.png"><span *ngIf="task$ | async as task" style="margin-left:20px;">{{task.todo.length}}</span></div>
+            <div style="margin-top:10px;"><span style="font-size: 23px; color: #4589FF">Tasks to do</span></div>
+        </div>
+    </div>
+    <div style="display:flex; margin-top: 30px; justify-content: space-between;  min-width: 300px; max-width: 921px;">
+        <div class="status">
+            <div><img src="./assets/img/BoardIcon.png"><span *ngIf="task$ | async as task" style="margin-left:20px;">{{task.todo.length + task.done.length + task.feedback.length + task.progress.length}}</span></div>
+            <div style="margin-top:10px;"><span style="font-size: 23px; color: #4589FF">Task in<br>Board</span></div>
+        </div>
+        <div class="status">
+            <div><img src="./assets/img/progress.png"><span *ngIf="task$ | async as task" style="margin-left:20px;">{{task.progress.length}}</span></div>
+            <div style="margin-top:10px;"><span style="font-size: 23px; color: #4589FF">Task in<br>Progress</span></div>
+        </div>
+        <div class="status">
+            <div><img src="./assets/img/feedback.png"><span *ngIf="task$ | async as task" style="margin-left:20px;">{{task.feedback.length}}</span></div>
+            <div style="margin-top:10px;"><span style="font-size: 23px; color: #4589FF">Awaiting<br>Feedback</span></div>
+        </div>
+        <div class="status">
+            <div><img src="./assets/img/done.png"><span *ngIf="task$ | async as task" style="margin-left:20px;">{{task.done.length}}</span></div>
+            <div style="margin-top:10px;"><span style="font-size: 23px; color: #4589FF">Tasks<br>done</span></div>
+        </div>
+    </div>
+</div>

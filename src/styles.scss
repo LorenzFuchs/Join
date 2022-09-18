@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100vh;}
+body { margin: 0; font-family: 'Open Sans', sans-serif;}
+
+.logo {
+    position: absolute;
+    top: 80px;
+    left: 77px;
+}
+
+.logo-menu {
+    width: 47px;
+    height: 57px;
+}
+
+.blue-snackbar {
+    background: #3f51b5;
+    width: 100px !important;
+}
+
+

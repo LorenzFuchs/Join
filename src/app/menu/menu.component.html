@@ -1,0 +1,47 @@
+<mat-toolbar>
+    <div>
+        <img class="logo-menu" src="./assets/img/Capa2.png" alt="">
+    </div>
+    <div  class="menu-img-container">
+        <span>Kanban Project Management Tool</span>
+        <img class="profile-image-toolbar" width="30" height="30" src="assets/img/question.png">
+        <button mat-button [mat-menu-trigger-for]="userMenu">
+            <img  *ngIf="user$ | async as user; else profilePicture" class="profile-image-toolbar" width="50" height="50"  [src]="user.photoURL ?? 'assets/img/placeholder.png'">
+            <ng-template #profilePicture>
+                <img class="profile-image-toolbar" width="50" height="50" src="assets/img/placeholder.png" >
+            </ng-template>
+        </button>
+        
+    </div>
+
+    <ng-container  *ngIf="">
+        <button mat-button>
+            <img class="profile-image-toolbar" width="30" height="30" [src]="">
+
+            <mat-icon>expand_more</mat-icon>
+        </button>
+    </ng-container>
+    <ng-template #loginButton>
+        <button mat-button routerLink="/login">
+            <mat-icon>login</mat-icon>
+            Login
+        </button>
+    </ng-template>
+
+</mat-toolbar>
+<div class="content">
+
+</div>
+
+
+    <mat-menu #userMenu="matMenu">
+        <ng-container *ngIf="user$ | async as user; else guestLoginButton">
+            <button mat-menu-item (click)="logout()" >Logout</button>
+            <button mat-menu-item (click)="openDialog()">Profile</button>
+        </ng-container>
+        <ng-template #guestLoginButton>
+            <button mat-menu-item (click)="backToLandingPage()">Back to login</button>
+        </ng-template>
+     
+      </mat-menu>
+

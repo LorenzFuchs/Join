@@ -1,0 +1,54 @@
+<body>
+    <div>
+        <img class="logo" src="./assets/img/Capa2.png" alt="">
+      </div>
+      <div class="form-container mat-elevation-z5">
+        <mat-icon routerLink="/login" class="arrow-back-icon" aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_back"></mat-icon>
+        <h1>Sign up</h1>
+        <div >
+          <form (ngSubmit)="signUp()">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input type="text" matInput [formControl]="name" placeholder="Please insert your name">
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error *ngIf="name.hasError('name') && !name.hasError('required')">
+                  Please enter a valid name
+                </mat-error>
+                <mat-error *ngIf="email.hasError('required')">
+                  Name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput [formControl]="email" placeholder="Ex. pat@example.com">
+              <mat-icon matSuffix>mail</mat-icon>
+              <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="email.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput [formControl]="password" placeholder="Please insert your password">
+              <mat-icon matSuffix>lock</mat-icon>
+              <mat-error *ngIf="password.hasError('password') && !password.hasError('required')">
+                Please enter a password
+              </mat-error>
+              <mat-error *ngIf="password.hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <div class="center margin-top">
+                <button class="btn-blue" mat-raised-button color="primary" type="submit">
+                    Sign up
+                </button>
+            </div>
+            
+        </form>
+        </div>
+        
+    </div>
+        
+</body>

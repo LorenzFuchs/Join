@@ -1,0 +1,83 @@
+<form   *ngIf="task$ | async as task" [formGroup]="newTask" (ngSubmit)="createNewTask(task)">
+    <div style="display:flex; width: 100%">
+        <div class="halfOfScreen1">
+            
+                <div class="example-container">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Enter a title</mat-label>
+                      <input matInput  formControlName="title" required>
+                      
+                    </mat-form-field>
+                  </div>
+                  <mat-form-field *ngIf="user$ | async as user" appearance="fill">
+                    <mat-label>Select contacts to assign</mat-label>
+                    <mat-select  formControlName="selectPerson"  multiple>
+                      <mat-select-trigger>
+                        {{ newTask.get('selectPerson').value?.[0] || ''}}
+                        <span *ngIf="(newTask.get('selectPerson').value?.length || 0) > 1" class="example-additional-selection">
+                          (+{{(newTask.get('selectPerson').value?.length || 0) - 1}} {{newTask.get('selectPerson').value?.length === 2 ? 'other' : 'others'}})
+                        </span>
+                      </mat-select-trigger>
+                      <mat-option  *ngFor="let person of user.contacts" [value]="person['name']">{{person['name']}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Date</mat-label>
+                    <input type="date" matInput formControlName="date">
+                    <mat-error *ngIf="newTask.get('date').hasError('date') && !newTask.get('date').hasError('required')">
+                      Please enter a date
+                    </mat-error>
+                    <mat-error *ngIf="newTask.get('date').hasError('required')">
+                      Date is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Category</mat-label>
+                  <mat-select formControlName="category" multiple>
+                    <mat-select-trigger>
+                      {{newTask.get('category').value?.[0] || ''}}
+                      <span *ngIf="(newTask.get('category').value?.length || 0) > 1" class="example-additional-selection">
+                        (+{{(newTask.get('category').value?.length || 0) - 1}} {{newTask.get('category').value?.length === 2 ? 'other' : 'others'}})
+                      </span>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div>
+                    <mat-button-toggle-group formControlName="urgency" name="fontStyle" aria-label="Font Style">
+                        <mat-button-toggle id="redbtn" (click)="setUrgency('urgent')" value="urgent">Urgent <mat-icon aria-hidden="false" aria-label="Example home icon" ><span class="material-symbols-outlined red-icon">
+                          keyboard_double_arrow_up
+                          </span></mat-icon></mat-button-toggle>
+                        <mat-button-toggle id="yellowbtn"  (click)="setUrgency('medium')" value="medium">Medium <span class="yellow-icon">=</span></mat-button-toggle>
+                        <mat-button-toggle id="greenbtn" (click)="setUrgency('low')" value="low">Low <mat-icon aria-hidden="false" aria-label="Example home icon" ><span class="material-symbols-outlined green-icon">
+                          keyboard_double_arrow_down
+                          </span></mat-icon></mat-button-toggle>
+                      </mat-button-toggle-group>
+                      
+                </div>
+                <mat-form-field  appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <textarea formControlName="description" matInput></textarea>
+                    <mat-error *ngIf="newTask.get('description').hasError('description') && !newTask.get('description').hasError('required')">
+                        Please enter a date
+                      </mat-error>
+                      <mat-error *ngIf="newTask.get('description').hasError('required')">
+                        Description is <strong>required</strong>
+                      </mat-error>
+                  </mat-form-field>
+                  
+            
+        </div>
+        <div class="halfOfScreen">
+            <div style="display:flex;">
+                <button (click)="clearForm()" class="btn-clear" mat-raised-button  type="button">
+                    Clear
+                </button>
+                <button class="btn-create" mat-raised-button  type="submit">
+                    Create Task
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="done"></mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    </form>

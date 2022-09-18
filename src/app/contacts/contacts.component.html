@@ -1,0 +1,66 @@
+
+  <div class="contact-container" *ngIf="user$ | async as user">
+    <div (click)="showDetails(contact['name'], contact['email'], contact['phone'], i)" class="contact-div" *ngFor="let contact of user.contacts, let i = index">
+      <span class="name">{{contact['name']}}</span>
+      <span class="email">{{contact['email']}}</span>
+    </div>
+    </div>
+    <div style="height:400px; width: 500px; position: absolute; top: 0; right: 0;">
+      <router-outlet></router-outlet>
+    </div>
+
+
+    <mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value">
+        <mat-drawer class="mat-drawer"  #drawer [mode]="mode.value">
+            <div class="add-contact-label">
+                <img src="./assets/img/Capa2.png" >
+                <h1>Add contact</h1>
+                <h2>Tasks are better with a team!</h2>
+            </div>
+            <div class="add-contact">
+                <img src="./assets/img/addContact.png" >
+                <form *ngIf="user$ | async as user" (ngSubmit)="addContact(user)" [formGroup]="newContact">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Name</mat-label>
+                        <input matInput  formControlName="name" required>
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" formControlName="email" required>
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Phonenumber</mat-label>
+                        <input matInput type="tel"  formControlName="phone" required>
+                      </mat-form-field>
+                      <div>
+                        <button  class="btn-blue" mat-raised-button  type="button">
+                            Cancel
+                            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="close"></mat-icon>
+                        </button>
+                        <button class="btn-blue" mat-raised-button color="primary" type="submit">
+                            Create contact
+                            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="done"></mat-icon>
+                        </button>
+                    </div>
+                </form>
+              
+            </div>
+        </mat-drawer>
+        <mat-drawer-content class="mat-drawer-content">
+          <mat-form-field style="display:none;" appearance="fill">
+            
+            <mat-select #mode value="over">
+              
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field style="display:none;" appearance="fill">
+            
+            <mat-select #hasBackdrop value="true">
+            </mat-select>
+          </mat-form-field>
+          
+          <button class="toggle-btn" mat-raised-button (click)="drawer.toggle()">New contact <img src="./assets/img/userPlus.png" alt=""></button>
+        </mat-drawer-content>
+      </mat-drawer-container>
+
+

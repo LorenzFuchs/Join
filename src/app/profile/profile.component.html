@@ -1,0 +1,28 @@
+<div class="form-container text-center" *ngIf="user$ | async as user">
+    <h1>User Profile</h1>
+    <div class="profile-image">
+        <img width="120" height="120" [src]="user.photoURL ?? 'assets/img/placeholder.png'">
+        <button mat-mini-fab (click)="inputField.click()">
+            <mat-icon >edit</mat-icon>
+        </button>
+    </div>
+    <input #inputField type="file" hidden (change)="uploadImage($event, user)">
+    <form [formGroup]="profileForm" (ngSubmit)="saveProfile()" class="margin-top">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input #name type="text" matInput formControlName="name" placeholder="Please insert your name">
+            <mat-icon matSuffix>person</mat-icon>
+            
+          </mat-form-field>
+       
+        
+        <div class="center margin-top">
+            <button (click)="closeDialog()" class="btn-blue" mat-raised-button type="button">
+                Close
+            </button>
+            <button class="btn-blue" mat-raised-button type="submit">
+                Save
+            </button>
+        </div>
+      </form>
+</div>

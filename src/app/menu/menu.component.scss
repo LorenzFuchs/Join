@@ -1,0 +1,29 @@
+mat-toolbar {
+    justify-content: space-between;
+    
+}
+
+
+
+.profile-image-toolbar {
+    border-radius: 100%;
+    margin-right: 8px;
+}
+
+mat-toolbar {
+    background-color: #4589FF;
+    height: 97px;
+}
+
+span {
+    color: white;
+}
+
+img {
+    margin-left: 20px;
+}
+
+.menu-img-container{
+    display: flex;
+    align-items: center;
+}

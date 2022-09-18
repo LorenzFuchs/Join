@@ -1,0 +1,37 @@
+.red {
+    background-color: red !important;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.category {
+    padding: 4px 25px 4px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    height: 19px;
+    width: 80px;
+    text-align: center;
+}
+
+.edit-button {
+    img {
+        cursor: pointer;
+    }
+    
+}
+
+.icon-close {
+    display: flex;
+    justify-content: flex-end;
+}
+
+mat-icon {
+    cursor: pointer;
+}

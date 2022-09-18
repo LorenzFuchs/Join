@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "join-e7b42": {
+      "hosting": {
+        "join": [
+          "join-e7b42"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "join-e7b42"
+  }
+}

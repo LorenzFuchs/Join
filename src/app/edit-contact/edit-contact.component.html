@@ -1,0 +1,62 @@
+
+<div class="contact-details">
+    <h1>{{name}}</h1>
+    <h2>Contact Information</h2>
+    <div class="contact-information">
+        <span>Email</span>
+        <span>{{email}}</span>
+        <span>Mobil</span>
+        <span>{{phone}}</span>
+    </div>
+    <button (click)="drawer.toggle()" ><img src="./assets/img/editContact.png"> Edit Contact</button>
+</div>
+
+<mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value">
+    <mat-drawer class="mat-drawer"  #drawer [mode]="mode.value">
+        <div class="add-contact-label">
+            <img src="./assets/img/Capa2.png" >
+            <h1>Edit contact</h1>
+        </div>
+        <div class="add-contact">
+            <img src="./assets/img/addContact.png" >
+            <form [formGroup]="contactDetails" (ngSubmit)="save(user)"  *ngIf="user$ | async as user">
+                <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input [(ngModel)]="name" formControlName="name"  matInput   required>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input [(ngModel)]="email" formControlName="email" matInput type="email" required>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Phonenumber</mat-label>
+                    <input [(ngModel)]="phone" formControlName="phone" matInput type="tel"   required>
+                  </mat-form-field>
+                  <div style="display: flex; justify-content: center">
+                   
+                    <button (click)="drawer.toggle()" class="btn-blue" mat-raised-button  type="submit">
+                        Save
+                       
+                    </button>
+                </div>
+            </form>
+          
+        </div>
+    </mat-drawer>
+    <mat-drawer-content class="mat-drawer-content">
+      <mat-form-field style="display:none;" appearance="fill">
+        
+        <mat-select #mode value="over">
+          
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="display:none;" appearance="fill">
+        
+        <mat-select #hasBackdrop value="true">
+        </mat-select>
+      </mat-form-field>
+      
+     
+    </mat-drawer-content>
+  </mat-drawer-container>
+

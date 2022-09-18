@@ -1,0 +1,22 @@
+<div style="height: calc(100vh - 97px);">
+    <app-menu></app-menu>
+   
+      <mat-drawer-container  class="example-container">
+        <mat-drawer class="sidenav" mode="side" opened><div class="menu-items">
+           
+               
+          <div [routerLink]="['/home/summary']" class="menu-items-div"><div><img src="./assets/img/summary.png"></div><div style="width: 100px;"><span>Summary</span></div></div>
+          <div [routerLink]="['/home/board']" class="menu-items-div"><div><img src="./assets/img/board.png"></div><div style="width: 100px;"><span>Board</span></div></div> 
+          <div [routerLink]="['/home/addTask']" class="menu-items-div"><div><img src="./assets/img/addTask.png"></div><div style="width: 100px;"><span>Add Task</span></div></div>
+          <div [routerLink]="['/home/contacts']"class="menu-items-div"><div><img src="./assets/img/contacts.png"></div><div style="width: 100px;"><span> Contacts</span></div></div>
+       
+      
+  </div></mat-drawer>
+        <mat-drawer-content class="mat-drawer-content" ><router-outlet></router-outlet></mat-drawer-content>
+      </mat-drawer-container>
+      
+</div>
+
+
+ 
+
