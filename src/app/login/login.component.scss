@@ -27,7 +27,8 @@ margin-left: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+  overflow: hidden;
 }
 
 .form-container {
@@ -88,3 +89,48 @@ input.example-right-align {
   -moz-appearance: textfield;
 }
 
+.password {
+  font-weight: 400;
+  font-size: 19px;
+  color: #005DFF;
+  display: flex;
+  justify-content: flex-end;
+
+  span{
+    cursor: pointer;
+  }
+}
+
+
+
+@media(max-width: 560px) {
+  .sign-up-container {
+    right: unset;
+   top: unset;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: unset;
+   
+  }
+  
+
+  .form-container {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin: 30px;
+    width: unset;
+  }
+
+  .logo {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    height: 50px;
+    width: 50px;
+}
+  .body {
+    flex-direction: column-reverse;
+  }
+  
+}

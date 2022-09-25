@@ -27,3 +27,50 @@ img {
     display: flex;
     align-items: center;
 }
+
+
+.disabled {
+    pointer-events: none;
+}
+.d-none {
+    display: none;
+ }
+
+
+
+@media(max-width: 560px) {
+   .menu-img-container {
+    span {
+        display: none;
+    }
+   }
+
+   .example-container {
+    display: flex;
+   }
+
+ 
+ 
+
+.btn-create {
+    background-color: #4589FF;
+    color: white;
+    height: 61px;
+    width: 180px;
+    padding: 18px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 23px;
+    margin-left: 20px;
+    border-radius: 10px;
+  
+    &:hover {
+      background-color: #1466f5;
+    }
+  
+  }
+  
+
+ 
+  }

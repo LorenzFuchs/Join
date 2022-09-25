@@ -1,62 +1,80 @@
-
 <div class="contact-details">
-    <h1>{{name}}</h1>
-    <h2>Contact Information</h2>
-    <div class="contact-information">
-        <span>Email</span>
-        <span>{{email}}</span>
-        <span>Mobil</span>
-        <span>{{phone}}</span>
-    </div>
-    <button (click)="drawer.toggle()" ><img src="./assets/img/editContact.png"> Edit Contact</button>
+  <div style="display:flex; align-items: center">
+    <div class="contact-icon1 {{color}}">{{getFirstLetterOfFirstName(firstname)}} {{getFirstLetterOfSurname(name)}}</div>
+    <h1 style="margin-left: 20px;margin-bottom: 0 !important; font-weight: 600;">{{firstname}} {{name}}</h1>
+  </div>
+  <div style="display:flex ; margin-top: 20px;">
+    <h2 style="margin: 0 !important">Contact Information</h2>
+    <button style="margin-left: 20px;" (click)="drawer.toggle()"><img src="./assets/img/editContact.png"> Edit Contact</button>
+  </div>
+  
+  <div class="contact-information">
+    <span><b>Email</b></span>
+    <a style="margin-top: 10px ; color: #005DFF" href="mailto:{{email}}">{{email}}</a>
+    <span><b>Mobil</b></span>
+    <span>{{phone}}</span>
+  </div>
+  
 </div>
 
 <mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value">
-    <mat-drawer class="mat-drawer"  #drawer [mode]="mode.value">
-        <div class="add-contact-label">
-            <img src="./assets/img/Capa2.png" >
-            <h1>Edit contact</h1>
-        </div>
-        <div class="add-contact">
-            <img src="./assets/img/addContact.png" >
-            <form [formGroup]="contactDetails" (ngSubmit)="save(user)"  *ngIf="user$ | async as user">
-                <mat-form-field appearance="fill">
-                    <mat-label>Name</mat-label>
-                    <input [(ngModel)]="name" formControlName="name"  matInput   required>
-                  </mat-form-field>
-                  <mat-form-field appearance="fill">
-                    <mat-label>Email</mat-label>
-                    <input [(ngModel)]="email" formControlName="email" matInput type="email" required>
-                  </mat-form-field>
-                  <mat-form-field appearance="fill">
-                    <mat-label>Phonenumber</mat-label>
-                    <input [(ngModel)]="phone" formControlName="phone" matInput type="tel"   required>
-                  </mat-form-field>
-                  <div style="display: flex; justify-content: center">
-                   
-                    <button (click)="drawer.toggle()" class="btn-blue" mat-raised-button  type="submit">
-                        Save
-                       
-                    </button>
-                </div>
-            </form>
-          
-        </div>
-    </mat-drawer>
-    <mat-drawer-content class="mat-drawer-content">
-      <mat-form-field style="display:none;" appearance="fill">
-        
-        <mat-select #mode value="over">
-          
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field style="display:none;" appearance="fill">
-        
-        <mat-select #hasBackdrop value="true">
-        </mat-select>
-      </mat-form-field>
-      
-     
-    </mat-drawer-content>
-  </mat-drawer-container>
+  <mat-drawer class="mat-drawer" #drawer [mode]="mode.value">
+    <div class="add-contact-label">
+      <img *ngIf="user$ | async as user" src="./assets/img/Capa2.png">
+      <h1 style="margin-top:20px ;">Edit contact</h1>
+    </div>
+    <div class="add-contact">
+      <div class="contact-icon {{color}}" *ngIf="user$ | async as user">{{getFirstLetterOfFirstName(firstname)}}
+        {{getFirstLetterOfSurname(name)}}</div>
+      <form [formGroup]="contactDetails" (ngSubmit)="save(user)" *ngIf="user$ | async as user">
+        <mat-form-field appearance="fill">
+          <mat-label>First name</mat-label>
+          <input [(ngModel)]="firstname" formControlName="firstname" matInput required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Surname</mat-label>
+          <input [(ngModel)]="name" formControlName="name" matInput required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input [(ngModel)]="email" formControlName="email" matInput type="email" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Phonenumber</mat-label>
+          <input [(ngModel)]="phone" formControlName="phone" matInput type="tel" required>
+        </mat-form-field>
+        <mat-label><b>Change color of contact</b></mat-label>
+        <mat-radio-group [(ngModel)]="color" formControlName="color" aria-label="Select an option">
 
+          <mat-radio-button class="red" value="red1"></mat-radio-button>
+          <mat-radio-button class="blue" value="blue1"></mat-radio-button>
+          <mat-radio-button class="green" value="green1"></mat-radio-button>
+          <mat-radio-button class="orange" value="orange1"></mat-radio-button>
+        </mat-radio-group>
+        <div style="display: flex; justify-content: center; margin-top: 30px;">
+
+          <button (click)="drawer.toggle()" class="btn-blue" mat-raised-button type="submit">
+            Save
+
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </mat-drawer>
+  <mat-drawer-content class="mat-drawer-content">
+    <mat-form-field style="display:none;" appearance="fill">
+
+      <mat-select #mode value="over">
+
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field style="display:none;" appearance="fill">
+
+      <mat-select #hasBackdrop value="true">
+      </mat-select>
+    </mat-form-field>
+
+
+  </mat-drawer-content>
+</mat-drawer-container>

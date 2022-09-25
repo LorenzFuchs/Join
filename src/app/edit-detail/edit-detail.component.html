@@ -9,16 +9,16 @@
                       
                     </mat-form-field>
                   </div>
-                  <mat-form-field appearance="fill">
+                  <mat-form-field (click)="contactsAvailable(user.contacts)" *ngIf="user$ | async as user" appearance="fill">
                     <mat-label>Select contacts to assign</mat-label>
-                    <mat-select [(ngModel)]="detail['selectPerson']" formControlName="selectPerson"  multiple>
+                    <mat-select    formControlName="selectPerson"  multiple>
                       <mat-select-trigger>
-                        {{ newTask.get('selectPerson').value?.[0] || ''}}
-                        <span *ngIf="(newTask.get('selectPerson').value?.length || 0) > 1" class="example-additional-selection">
-                          (+{{(newTask.get('selectPerson').value?.length || 0) - 1}} {{newTask.get('selectPerson').value?.length === 2 ? 'other' : 'others'}})
-                        </span>
+                        <span *ngFor="let person of persons">{{person}}, </span>
+            
                       </mat-select-trigger>
-                      <mat-option *ngFor="let person of persons" [value]="person">{{person}}</mat-option>
+                      <mat-option (click)="choosePerson(person)" *ngFor="let person of user.contacts" [value]="person">
+                        {{person['firstname']}} {{person['name']}}
+                      </mat-option>
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill">
@@ -31,18 +31,13 @@
                       Date is <strong>required</strong>
                     </mat-error>
                   </mat-form-field>
-                  <mat-form-field appearance="fill">
-                    <mat-label>Category</mat-label>
-                  <mat-select [(ngModel)]="detail['category']" formControlName="category" multiple>
-                    <mat-select-trigger>
-                      {{newTask.get('category').value?.[0] || ''}}
-                      <span *ngIf="(newTask.get('category').value?.length || 0) > 1" class="example-additional-selection">
-                        (+{{(newTask.get('category').value?.length || 0) - 1}} {{newTask.get('category').value?.length === 2 ? 'other' : 'others'}})
-                      </span>
-                    </mat-select-trigger>
-                    <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
+                  <mat-form-field  appearance="fill">
+                    <mat-label>Select an option</mat-label>
+                    <mat-select [(ngModel)]="detail['category']" formControlName="category" disableRipple>
+                      <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+                     
+                    </mat-select>
+                  </mat-form-field>
                 <div>
                     <mat-button-toggle-group [(ngModel)]="detail['urgency']" formControlName="urgency" name="fontStyle" aria-label="Font Style">
                         <mat-button-toggle (click)="setUrgency('urgent')" value="urgent">Urgent <img src="./assets/img/urgent.png"></mat-button-toggle>
@@ -51,7 +46,7 @@
                       </mat-button-toggle-group>
                       
                 </div>
-                <mat-form-field  appearance="fill">
+                <mat-form-field style="margin-top:20px ;" appearance="fill">
                     <mat-label>Description</mat-label>
                     <textarea [(ngModel)]="detail['description']" formControlName="description" matInput></textarea>
                     <mat-error *ngIf="newTask.get('description').hasError('description') && !newTask.get('description').hasError('required')">
@@ -62,7 +57,10 @@
                       </mat-error>
                   </mat-form-field>
                   <div class="submit-btn">
-                    <button class="btn-blue" mat-raised-button color="primary" type="submit">
+                    <button (click)="dialogClose()" class="btn-blue" mat-raised-button style="color: black"  type="button">
+                     Close
+                  </button>
+                    <button class="btn-blue" mat-raised-button style="background-color: #4589FF; color: white; margin-left: 10px;"  type="submit">
                         Ok
                         <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="done"></mat-icon>
                     </button>

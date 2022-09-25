@@ -34,9 +34,9 @@ export class SummaryComponent implements OnInit {
   ngOnInit(): void {
     
     this.firestore.collection('tasks').valueChanges({idField: '3ZgEDKj5kDoTAkwsDPLP'}).subscribe((changes: any)=>{                 //hier holen wir die Daten vom firestore
-      console.log('Received changes from database', changes);
+      
       this.items = changes; 
-     console.log(changes[0].done);
+     
      
      let doneArray = changes[0].done.filter(function (el) {
       return el.urgency == 'urgent'
@@ -58,7 +58,7 @@ export class SummaryComponent implements OnInit {
             
     });
       this.urgentTasks = doneArray.length + feedbackArray.length + progressArray.length + todoArray.length;
-      console.log(this.urgentTasks);
+      
       
       
                                                                        //immer wenn sich Daten im Firestore ändern, werden sie im Array allUsers gespeichert
@@ -68,6 +68,51 @@ export class SummaryComponent implements OnInit {
     
   }
  
- 
+ getCurrentDate() {
+  let today: any = new Date();
+let dd = String(today.getDate()).padStart(2, '0');
+let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+let yyyy = today.getFullYear();
+
+if(mm == '01') {
+  mm = 'January'
+}
+if(mm == '02') {
+  mm = 'February'
+}
+if(mm == '03') {
+  mm = 'March'
+}
+if(mm == '04') {
+  mm = 'April'
+}
+if(mm == '05') {
+  mm = 'May'
+}
+if(mm == '06') {
+  mm = 'June'
+}
+if(mm == '07') {
+  mm = 'July'
+}
+if(mm == '08') {
+  mm = 'August'
+}
+if(mm == '09') {
+  mm = 'September'
+}
+if(mm == '10') {
+  mm = 'October'
+}
+if(mm == '11') {
+  mm = 'November'
+}
+if(mm == '10') {
+  mm = 'December'
+}
+
+today = mm + ' ' + dd + ', ' + yyyy;
+return today;
+ }
  
 }

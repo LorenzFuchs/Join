@@ -47,13 +47,24 @@ export class BoardComponent implements OnInit {
   }
 
   edit(item, i, array) {
-    
-    
-    
-    const dialog = this.dialog.open(EditComponent)
+    const dialog = this.dialog.open(EditComponent, {
+      panelClass:'mat-container'
+
+    })
   dialog.componentInstance.item = item;
   dialog.componentInstance.i = i;
   dialog.componentInstance.array = array;
   }
+ 
+  getFirstLetterOfFirstName(name){
+    let firstLetterOfFirstName = name.toString().charAt(0);
+    
+    return firstLetterOfFirstName
+   }
   
+   getFirstLetterOfSurname(name){
+    let firstLetterOfSurname = name.toString().charAt(0);
+     
+    return firstLetterOfSurname
+   }
 }

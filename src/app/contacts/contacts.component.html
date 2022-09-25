@@ -1,13 +1,15 @@
 
   <div class="contact-container" *ngIf="user$ | async as user">
-    <div (click)="showDetails(contact['name'], contact['email'], contact['phone'], i)" class="contact-div" *ngFor="let contact of user.contacts, let i = index">
-      <span class="name">{{contact['name']}}</span>
-      <span class="email">{{contact['email']}}</span>
+    <div (click)="showDetails(contact ['firstname'], contact['name'], contact['email'], contact['phone'], i, contact['color'])" class="contact-div" *ngFor="let contact of user.contacts, let i = index">
+      <div  class="contact-icon {{contact['color']}}">{{getFirstLetterOfFirstName(contact['firstname'])}} {{getFirstLetterOfSurname(contact['name'])}}</div>
+      <div style="display:flex; flex-direction: column; margin-left: 30px">
+        <span class="name">{{contact['firstname']}} {{contact['name']}}</span>
+        <span class="email">{{contact['email']}}</span>
+      </div>
+      
     </div>
     </div>
-    <div style="height:400px; width: 500px; position: absolute; top: 0; right: 0;">
-      <router-outlet></router-outlet>
-    </div>
+   
 
 
     <mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value">
@@ -20,8 +22,12 @@
             <div class="add-contact">
                 <img src="./assets/img/addContact.png" >
                 <form *ngIf="user$ | async as user" (ngSubmit)="addContact(user)" [formGroup]="newContact">
+                  <mat-form-field appearance="fill">
+                    <mat-label>First name</mat-label>
+                    <input matInput  formControlName="firstname" required>
+                  </mat-form-field>
                     <mat-form-field appearance="fill">
-                        <mat-label>Name</mat-label>
+                        <mat-label>Surname</mat-label>
                         <input matInput  formControlName="name" required>
                       </mat-form-field>
                       <mat-form-field appearance="fill">
@@ -32,12 +38,20 @@
                         <mat-label>Phonenumber</mat-label>
                         <input matInput type="tel"  formControlName="phone" required>
                       </mat-form-field>
-                      <div>
-                        <button  class="btn-blue" mat-raised-button  type="button">
+                      <mat-label><b>Chosse color of contact</b></mat-label>
+                      <mat-radio-group formControlName="color" aria-label="Select an option">
+                        
+                        <mat-radio-button class="red"  value="red1"></mat-radio-button>
+                        <mat-radio-button class="blue" value="blue1"></mat-radio-button>
+                        <mat-radio-button class="green" value="green1"></mat-radio-button>
+                        <mat-radio-button class="orange" value="orange1"></mat-radio-button>
+                      </mat-radio-group>
+                      <div style="display:flex;margin-top: 30px;">
+                        <button  class="btn-cancel" mat-raised-button  type="button">
                             Cancel
                             <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="close"></mat-icon>
                         </button>
-                        <button class="btn-blue" mat-raised-button color="primary" type="submit">
+                        <button (click)="drawer.toggle()" class="btn-create" mat-raised-button  type="submit">
                             Create contact
                             <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="done"></mat-icon>
                         </button>

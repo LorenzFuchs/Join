@@ -1,5 +1,5 @@
 <div class="board">
-  <div style="display:flex ;" *ngIf="task$ | async as task">
+  <div  *ngIf="task$ | async as task">
     <div class="example-container">
         <h1>To do</h1>
         <div
@@ -10,10 +10,18 @@
           class="example-list"
           (cdkDropListDropped)="drop($event, task)">
           <div (click)="edit(item, i, 'todo')" class="example-box" *ngFor="let item of task.todo,  let i = index"  cdkDrag>
-            <div class="category {{item['category'][1]}}">{{item['category'][0]}}</div>
+            <div class="category {{item['color']}}">{{item['category']}}</div>
             <h2>{{item['title']}}</h2>
-            <div>{{item['description']}}</div>
-            <img src="./assets/img/{{item['urgency']}}.png" >
+            <div class="description">{{item['description']}}</div>
+            <div style="display:flex ; align-items: center; justify-content: space-between;">
+              <div style="display:flex ;">
+                <div *ngFor="let person of item['selectPerson']" class="select-person {{person['color']}}">{{getFirstLetterOfFirstName(person['firstname'])}} {{getFirstLetterOfSurname(person['name'])}}</div>
+              </div>
+              
+              <img src="./assets/img/{{item['urgency']}}.png" >
+            </div>
+            
+            
         </div>
         </div>
       </div>
@@ -29,11 +37,19 @@
           class="example-list"
           (cdkDropListDropped)="drop($event, task)">
           <div (click)="edit(item, i, 'progress')" class="example-box"  *ngFor="let item of task.progress,  let i = index" cdkDrag>
-            <div class="category {{item['category'][1]}}">{{item['category'][0]}}</div>
+            <div class="category {{item['color']}}">{{item['category']}}</div>
             <h2>{{item['title']}}</h2>
-            <div>{{item['description']}}</div>
-            <img src="./assets/img/{{item['urgency']}}.png" >
-          </div>
+            <div class="description">{{item['description']}}</div>
+            <div style="display:flex ; align-items: center; justify-content: space-between;">
+              <div style="display:flex ;">
+                <div *ngFor="let person of item['selectPerson']" class="select-person {{person['color']}}">{{getFirstLetterOfFirstName(person['firstname'])}} {{getFirstLetterOfSurname(person['name'])}}</div>
+              </div>
+              
+              <img src="./assets/img/{{item['urgency']}}.png" >
+            </div>
+            
+            
+        </div>
         </div>
       </div>
     
@@ -48,11 +64,19 @@
           class="example-list"
           (cdkDropListDropped)="drop($event, task)">
           <div (click)="edit(item, i, 'feedback')" class="example-box" *ngFor="let item of task.feedback,  let i = index" cdkDrag>
-            <div class="category {{item['category'][1]}}">{{item['category'][0]}}</div>
+            <div class="category {{item['color']}}">{{item['category']}}</div>
             <h2>{{item['title']}}</h2>
-            <div>{{item['description']}}</div>
-            <img src="./assets/img/{{item['urgency']}}.png" >
-          </div>
+            <div class="description">{{item['description']}}</div>
+            <div style="display:flex ; align-items: center; justify-content: space-between;">
+              <div style="display:flex ;">
+                <div *ngFor="let person of item['selectPerson']" class="select-person {{person['color']}}">{{getFirstLetterOfFirstName(person['firstname'])}} {{getFirstLetterOfSurname(person['name'])}}</div>
+              </div>
+              
+              <img src="./assets/img/{{item['urgency']}}.png" >
+            </div>
+            
+            
+        </div>
         </div>
       </div>
       <div class="example-container">
@@ -66,11 +90,19 @@
           class="example-list"
           (cdkDropListDropped)="drop($event, task)">
           <div (click)="edit(item, i, 'done')" class="example-box" *ngFor="let item of task.done,  let i = index" cdkDrag>
-            <div class="category {{item['category'][1]}}">{{item['category'][0]}}</div>
+            <div class="category {{item['color']}}">{{item['category']}}</div>
             <h2>{{item['title']}}</h2>
-            <div>{{item['description']}}</div>
-            <img src="./assets/img/{{item['urgency']}}.png" >
-          </div>
+            <div class="description">{{item['description']}}</div>
+            <div style="display:flex ; align-items: center; justify-content: space-between;">
+              <div style="display:flex ;">
+                <div *ngFor="let person of item['selectPerson']" class="select-person {{person['color']}}">{{getFirstLetterOfFirstName(person['firstname'])}} {{getFirstLetterOfSurname(person['name'])}}</div>
+              </div>
+              
+              <img src="./assets/img/{{item['urgency']}}.png" >
+            </div>
+            
+            
+        </div>
         </div>
       </div>
 </div>

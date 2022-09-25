@@ -1,16 +1,22 @@
 <mat-toolbar>
     <div>
-        <img class="logo-menu" src="./assets/img/Capa2.png" alt="">
+        <img routerLink="/home/summary" class="logo-menu" src="./assets/img/Capa2.png" alt="">
     </div>
     <div  class="menu-img-container">
         <span>Kanban Project Management Tool</span>
-        <img class="profile-image-toolbar" width="30" height="30" src="assets/img/question.png">
-        <button mat-button [mat-menu-trigger-for]="userMenu">
+        <!--<img class="profile-image-toolbar" width="30" height="30" src="assets/img/question.png">!-->
+        <button   mat-button [mat-menu-trigger-for]="userMenu">
             <img  *ngIf="user$ | async as user; else profilePicture" class="profile-image-toolbar" width="50" height="50"  [src]="user.photoURL ?? 'assets/img/placeholder.png'">
             <ng-template #profilePicture>
                 <img class="profile-image-toolbar" width="50" height="50" src="assets/img/placeholder.png" >
             </ng-template>
         </button>
+       
+        <button id="btn" class="d-none" mat-raised-button type="submit">
+            Create
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="done"></mat-icon>
+          </button>
+        
         
     </div>
 

@@ -6,22 +6,59 @@
   align-items: flex-end;
 }
 
-.halfOfScreen1{
+.description {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+
+.halfOfScreen1 {
   width: 35vw;
   display: flex;
   flex-direction: column;
+}
+
+textarea {
+  height: 100px;
 }
 
 .app-board {
   width: 100%;
 }
 
+.fz-23 {
+  font-size: 23px;
+}
+
+.label {
+  font-size: 19px;
+  color: #42526E;
+  font-weight: 700;
+}
+
 ::ng-deep {
   .mat-form-field .mat-form-field-flex {
     background-color: white;
-    
+
 
   }
+}
+
+.red1 {
+  background-color: red;
+}
+
+.blue1 {
+  background-color: blue;
+}
+
+.green1 {
+  background-color: green;
+}
+
+.orange1 {
+  background-color: orange;
 }
 
 form {
@@ -35,10 +72,11 @@ form {
 .red {
   background-color: red;
   color: white !important;
+
   .red-icon {
     color: white;
   }
-  
+
 }
 
 .red-icon {
@@ -48,6 +86,7 @@ form {
 .yellow {
   background-color: orange;
   color: white;
+
   .yellow-icon {
     color: white;
   }
@@ -58,15 +97,16 @@ form {
 }
 
 .green {
-  background-color: green;
+  background-color: #02CF2F;
   color: white;
+
   .green-icon {
     color: white;
   }
 }
 
 .green-icon {
-  color: green;
+  color: #02CF2F;
 }
 
 .background-none {
@@ -75,21 +115,37 @@ form {
 
 .mat-button-toggle {
   height: 51px;
-  width: 136px;
-  padding: 18px 10px 18px 10px;
+  width: 120px;
   border-radius: 10px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
   font-size: 19px;
-  margin-left: 10px;
+
   cursor: pointer;
 
-  
+
+}
+
+.toggle-group {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+}
+
+.d-none {
+  display: none;
 }
 
 
 
 mat-button-toggle-group {
   border: none;
+}
+
+textarea {
+  height: unset;
 }
 
 .btn-create {
@@ -121,17 +177,18 @@ mat-button-toggle-group {
   color: #647188;
   font-size: 23px;
   border-radius: 10px;
-&:hover {
-  color: #1466f5;
-  border: 1px solid #1466f5;
-  box-shadow: 0px 7px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-}
+
+  &:hover {
+    color: #1466f5;
+    border: 1px solid #1466f5;
+    box-shadow: 0px 7px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+  }
 }
 
 #redbtn {
   &:hover {
     border-bottom: 2px solid red;
-   
+
   }
 }
 
@@ -143,6 +200,95 @@ mat-button-toggle-group {
 
 #greenbtn {
   &:hover {
-    border-bottom: 2px solid green;
+    border-bottom: 2px solid #02CF2F;
+  }
+}
+
+.form-div {
+  display: flex;
+  width: 100%;
+}
+
+@media(max-width: 560px) {
+  form {
+    margin: unset;
+    padding: 10px;
+    justify-content: space-around;
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .halfOfScreen {
+    width: 100%;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .form-div {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mat-button-toggle {
+    min-width: 80px;
+    font-size: 12px;
+    width: unset;
+  }
+
+  .fz-23 {
+    font-size: 15px;
+  }
+
+  .btn-create {
+    min-width: 80px;
+    height: 30px;
+    font-size: 15px;
+  }
+
+  .btn-clear {
+    font-size: 15px;
+    height: 30px;
+    min-width: 80px;
+  }
+}
+
+@media(max-height: 770px) {
+  .label {
+    font-size: 12px;
+  }
+
+  .toggle-group {
+    padding: 5px;
+  }
+
+  .mat-button-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+  }
+
+  .fz-23 {
+    font-size: 12px;
+  }
+
+  .halfOfScreen {
+    margin-top: unset;
+  }
+
+  .btn-clear {
+    width: 50px;
+    font-size: 12px;
+  }
+
+  .btn-create {
+    width: 110px;
+    font-size: 12px;
+  }
+
+  .description{
+    margin-top: unset;
   }
 }

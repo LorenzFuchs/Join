@@ -7,6 +7,8 @@ import { switchMap } from 'rxjs';
 import { UserService } from '../services/user.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 
 @Component({
   selector: 'app-login',
@@ -16,31 +18,37 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   email: any = new FormControl('', [Validators.required, Validators.email]);
   password: any = new FormControl('', [Validators.required]);
-  constructor(private auth: Auth, private authService: AuthenticationService, private usersServie: UserService, private toast: HotToastService, private router: Router) { }
+  constructor(private auth: Auth,
+    private authService: AuthenticationService,
+    private usersServie: UserService,
+    private toast: HotToastService,
+    private router: Router,
+    public dialog: MatDialog,
+    ) { }
   hide = true;
   ngOnInit(): void {
   }
 
-login() {
-  
-  
-  if(!this.email.valid && this.password.valid){
-    return;
-  }
-  const email = this.email.value;
-  const password = this.password.value;
-  this.authService.login(email, password).pipe(
-    this.toast.observe({
-      success: 'Logged in successfully', 
-    loading: 'Logging in ...', 
-    error: 'There was an error'
-    })
-  ).subscribe(() => {
-    this.router.navigate(['/home']);
+  login() {
+
+
+    if (!this.email.valid && this.password.valid) {
+      return;
+    }
+    const email = this.email.value;
+    const password = this.password.value;
+    this.authService.login(email, password).pipe(
+      this.toast.observe({
+        success: 'Logged in successfully',
+        loading: 'Logging in ...',
+        error: 'There was an error'
+      })
+    ).subscribe(() => {
+      this.router.navigate(['/home/summary']);
     });
   }
 
-  loginGuest() {
-    this.router.navigate(['/home'])
-  }
+ 
+
+  
 }

@@ -12,23 +12,42 @@ export class EditComponent implements OnInit {
 item;
 i;
 array;
+urgent = 'urgent1';
+medium = 'medium1';
+low = 'low1';
   constructor(private firestore: AngularFirestore, public dialog: MatDialog, public dialogRef: MatDialogRef<EditComponent>) { }
 
   ngOnInit(): void {
-    console.log(this.item);
+    
     
   }
 
   editDetail(detail) {
-    const dialog = this.dialog.open(EditDetailComponent,{panelClass: ['animate__animated','animate__slideInLeft']})
+    const dialog = this.dialog.open(EditDetailComponent,{
+      disableClose: true,
+      panelClass: 'br-30'
+    })
   dialog.componentInstance.detail = detail;
   dialog.componentInstance.i = this.i;
   dialog.componentInstance.array = this.array;
+  this.dialogRef.close();
   }
 
   closeDialog(){
     this.dialogRef.close();
   }
+
+  getFirstLetterOfFirstName(name){
+    let firstLetterOfFirstName = name.toString().charAt(0);
+    
+    return firstLetterOfFirstName
+   }
+  
+   getFirstLetterOfSurname(name){
+    let firstLetterOfSurname = name.toString().charAt(0);
+     
+    return firstLetterOfSurname
+   }
 }
 
 

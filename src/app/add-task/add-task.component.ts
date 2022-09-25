@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { doc, updateDoc } from '@firebase/firestore';
 import { from } from 'rxjs';
@@ -8,7 +8,7 @@ import { Firestore } from '@angular/fire/firestore';
 import { switchMap } from 'rxjs';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Task, Task1 } from '../models/task.profile';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { formatCurrency } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessageComponent } from '../message/message.component';
@@ -28,17 +28,18 @@ export class AddTaskComponent implements OnInit {
     category: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     urgency: new FormControl('', Validators.required),
+    color: new FormControl([])
 
 
   })
   task$ = this.usersService.currentTasks$;
   user$ = this.usersService.currentUserProfile$;
+  menuImg = false;
 
 
 
-
+  persons = [];
   durationInSeconds = 2;
-  persons: string[] = ['Hans', 'Greta', 'Tom', 'Sepp'];
   categories: string[] = ['Marketing', 'Vertrieb', 'Produktion'];
   urgency: any;
   userId = '';
@@ -47,6 +48,7 @@ export class AddTaskComponent implements OnInit {
     private toast: HotToastService,
     private route: ActivatedRoute,
     private snackbar: MatSnackBar,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -56,26 +58,25 @@ export class AddTaskComponent implements OnInit {
   createNewTask(task: Task) {
     if (!this.newTask.valid) return;
     const profileData: any = this.newTask.value;
-    console.log(task);
+    
 
     if (profileData.category == 'Vertrieb') {
-      profileData.category.push('red');
+      profileData.color.push('red');
     }
     if (profileData.category == 'Produktion') {
-      profileData.category.push('green');
+      profileData.color.push('green');
     }
     if (profileData.category == 'Marketing') {
-      profileData.category.push('blue');
+      profileData.color.push('blue');
     }
     task.todo.push(profileData);
     this.firestore.collection('tasks').doc('3ZgEDKj5kDoTAkwsDPLP').update(task);
 
     this.openSnackBar();
 
-    
-   this.newTask.reset();
-
-
+    this.newTask.reset();
+   
+    this.persons = [];
 
 
   }
@@ -118,4 +119,38 @@ export class AddTaskComponent implements OnInit {
     }
 
   }
+
+  getFirstLetterOfFirstName(firstname){
+    let firstLetterOfFirstName = firstname.toString().charAt(0);
+   
+  
+  
+  return firstLetterOfFirstName
+  
+  }
+
+  getFirstLetterOfSurname(name){
+    let firstLetterOfSurname = name.toString().charAt(0);
+     
+    return firstLetterOfSurname
+   }
+
+  
+   choosePerson(person){
+    if(this.persons.includes(person['firstname'])){
+      this.persons.splice(this.persons.findIndex(e=> e === person['firstname']), 1);
+     
+      
+    }else {
+      this.persons.push(person['firstname']);
+    }
+    
+  }
+  contactsAvailable(contacts){
+    if(contacts == ''){
+      alert('No contacts available. Please add new contacts.')
+    }
+  }
+
+  
 }

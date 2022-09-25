@@ -11,6 +11,8 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { EditComponent } from './edit/edit.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
+import { VarifyEmailComponent } from './varify-email/varify-email.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [{
   path: 'home',
@@ -42,7 +44,14 @@ const routes: Routes = [{
 }, {
   path:'sign-up',
   component: SignUpComponent
-}, 
+}, {
+  path:'varify-email',
+  component: VarifyEmailComponent
+},
+{
+  path: 'forgot-password',
+  component: ForgotPasswordComponent
+}
 
   
 ];

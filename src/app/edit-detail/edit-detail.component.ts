@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { EditComponent } from '../edit/edit.component';
 import { Task } from '../models/task.profile';
 import { UserService } from '../services/user.service';
 
@@ -19,19 +20,22 @@ export class EditDetailComponent implements OnInit {
     category: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     urgency: new FormControl('', Validators.required),
-    status: new FormControl('todo')
-
+    status: new FormControl('todo'),
+    color: new FormControl([])
   })
   task$ = this.usersService.currentTasks$;
   i;
   array;
-
-  persons: string[] = ['Hans', 'Greta', 'Tom', 'Sepp'];
+  user$ = this.usersService.currentUserProfile$;
+  persons = [];
+  
   categories: string[] = ['Marketing', 'Vertrieb', 'Produktion'];
   urgency: any;
-  constructor(private usersService: UserService, private firestore: AngularFirestore, public dialogRef: MatDialogRef<EditDetailComponent>) { }
+  constructor(private usersService: UserService, private firestore: AngularFirestore, public dialogRef: MatDialogRef<EditComponent, EditDetailComponent>) { }
 
   ngOnInit(): void {
+    
+    
   }
 
   update(task: Task) {
@@ -40,22 +44,63 @@ export class EditDetailComponent implements OnInit {
 
 
     if (profileData.category == 'Vertrieb') {
-      profileData.category.push('red');
+      
+      profileData.color.push('red');
     }
     if (profileData.category == 'Produktion') {
-      profileData.category.push('green');
+      
+      profileData.color.push('green');
     }
     if (profileData.category == 'Marketing') {
-      profileData.category.push('blue');
+      
+      profileData.color.push('blue');
     }
 
     task[this.array][this.i] = profileData;
 
     this.firestore.collection('tasks').doc('3ZgEDKj5kDoTAkwsDPLP').update(task);
     this.dialogRef.close();
+    
 
   }
   setUrgency(urgency) {
     this.urgency = urgency;
+  }
+  getFirstLetterOfFirstName(name){
+    let firstLetterOfFirstName = name.toString().charAt(0);
+    
+    return firstLetterOfFirstName
+   }
+  
+   getFirstLetterOfSurname(name){
+    let firstLetterOfSurname = name.toString().charAt(0);
+     
+    return firstLetterOfSurname
+   }
+
+   choosePerson(person){
+    
+    
+    if(this.persons.includes(person['firstname'])){
+      
+      this.persons.splice(this.persons.findIndex(e=> e === person['firstname']), 1);
+      
+      
+    }else {
+      this.persons.push(person['firstname']);
+    }
+    
+  }
+
+  contactsAvailable(contacts){
+    if(contacts == ''){
+      alert('No contacts available. Please add new contacts.')
+    }
+    
+    
+  }
+
+  dialogClose() {
+    this.dialogRef.close();
   }
 }

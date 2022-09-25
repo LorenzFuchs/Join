@@ -1,8 +1,9 @@
+
 <div class="icon-close"><mat-icon (click)="closeDialog()" aria-hidden="false" aria-label="Example home icon" fontIcon="close"></mat-icon></div>
-<div class="category {{item['category'][1]}}">{{item['category'][0]}}</div>
+<div class="category {{item['color']}}">{{item['category']}}</div>
 <h1>{{item['title']}}</h1>
-<div><span>{{item['description']}}</span></div>
-<div><span><b>Due date: </b></span><span>{{item['date']}}</span></div>
-<div><span><b>Priority: </b></span><span>{{item['urgency']}}</span><img src="./assets/img/{{item['urgency']}}.png" ></div>
-<div><span><b>Assigned To: </b></span><span>{{item['selectPerson']}}</span></div>
+<div><span class="fw-400">{{item['description']}}</span></div>
+<div class="mt-15"><span class="fw-700"><b>Due date: </b></span><span class="fw-400">{{item['date']}}</span></div>
+<div class="mt-15" style="display:flex ;  align-items: center;"><span class="fw-700"><b>Priority: </b></span><div class="{{(item['urgency'])}} priority"><span>{{item['urgency']}}</span><img src="./assets/img/{{item['urgency']}}.png" ></div></div>
+<div class="mt-15"><span><b>Assigned To: </b></span><div class="assigned" *ngFor="let person of item['selectPerson']" ><div class="select-person {{person['color']}}"><span >{{getFirstLetterOfFirstName(person['firstname'])}} {{getFirstLetterOfSurname(person['name'])}}</span></div><div><span style="margin-left: 20px;" class="fw-400">{{person['firstname']}}{{person['name']}}</span></div></div></div>
 <div class="edit-button"><img (click)="editDetail(item)" src="./assets/img/edit.png"></div>

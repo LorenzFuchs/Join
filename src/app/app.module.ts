@@ -41,7 +41,12 @@ import { EditComponent } from './edit/edit.component';
 import { EditDetailComponent } from './edit-detail/edit-detail.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatRadioModule} from '@angular/material/radio';
 import { MessageComponent } from './message/message.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { VarifyEmailComponent } from './varify-email/varify-email.component';
+import {RouterModule} from '@angular/router';
 
 
 
@@ -72,7 +77,9 @@ import { MessageComponent } from './message/message.component';
     EditComponent,
     EditDetailComponent,
     EditContactComponent,
-    MessageComponent
+    MessageComponent,
+    ForgotPasswordComponent,
+    VarifyEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -84,12 +91,15 @@ import { MessageComponent } from './message/message.component';
     MatCardModule,
     MatNativeDateModule,
     AngularFireModule,
+    MatAutocompleteModule,
+    RouterModule,
     MatSelectModule,
     AngularFirestoreModule,
     MatDatepickerModule,
     MatDialogModule,
     MatSidenavModule,
     MatSnackBarModule,
+    MatRadioModule,
     DragDropModule,
     MatInputModule,
     MatMenuModule,

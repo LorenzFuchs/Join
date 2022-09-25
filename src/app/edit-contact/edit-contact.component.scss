@@ -1,7 +1,13 @@
 .contact-information {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 16px;
+    span {
+      margin-top: 10px;
+    }
 }
 
 .contact-details {
@@ -9,6 +15,8 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    
+    
 
     button {
         background: white;
@@ -60,7 +68,7 @@
       
         h1 {
           font-size: 48px;
-          margin-top: 20px;
+          font-weight: 600 !important;
         }
       
         h2 {
@@ -88,6 +96,7 @@
         form {
           display: flex;
           flex-direction: column;
+          margin-top: 20px;
         }
       
       
@@ -154,3 +163,46 @@
        
         
       }
+
+      .contact-icon {
+        margin-top: 20px;
+        height: 120px;
+        width: 120px;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: white;
+        font-size: 47px;
+      }
+
+      .contact-icon1 {
+        height: 80px;
+        width: 80px;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: white;
+        font-size: 30px;
+      }
+
+      .red1 {
+        background-color: #EE00D6;
+      }
+      
+      .blue1 {
+        background-color: #0190E0;
+      }
+      
+      .green1 {
+        background-color: #02CF2F;
+      }
+      
+      .orange1 {
+        background-color: #FF5C00;
+      }
+
+      
