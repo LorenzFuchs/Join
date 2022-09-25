@@ -79,5 +79,7 @@ export class ContactsComponent implements OnInit {
    
   return firstLetterOfSurname
  }
-  
+  cancelForm() {
+    this.newContact.reset();
+  }
 }

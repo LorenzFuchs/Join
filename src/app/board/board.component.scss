@@ -1,5 +1,5 @@
 .board {
-  margin-top: 30px;
+  margin-top: 120px;
   margin-left: 30px;
 }
 
@@ -71,7 +71,7 @@ h1 {
 
 .example-list {
 
-
+  padding: 5px;
   min-height: 800px;
   overflow: hidden;
   display: block;
@@ -182,4 +182,47 @@ h2 {
 
 .orange1 {
   background-color: #FF5C00;
+}
+
+@media(max-width: 784px) {
+  .board {
+    margin-left: unset;
+    margin-top: 20px;
+  }
+
+  .mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .example-container {
+    margin: unset;
+    min-height: unset;
+    width: 100%;
+    padding: 0;
+    border: unset;
+
+    &:hover {
+      border: unset;
+    }
+
+  }
+
+  .example-box {
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+    width: 100%;
+  }
+
+  .example-list {
+    padding: 10px;
+    min-height: unset;
+
+  }
+
+  h1 {
+    margin: 0;
+    margin-left: 20px;
+  }
+
 }

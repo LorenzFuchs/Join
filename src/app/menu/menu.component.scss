@@ -13,6 +13,7 @@ mat-toolbar {
 mat-toolbar {
     background-color: #4589FF;
     height: 97px;
+    position: fixed;
 }
 
 span {
@@ -38,7 +39,7 @@ img {
 
 
 
-@media(max-width: 560px) {
+@media(max-width: 784px) {
    .menu-img-container {
     span {
         display: none;
@@ -49,7 +50,9 @@ img {
     display: flex;
    }
 
- 
+ mat-toolbar{
+    position: unset;
+ }
  
 
 .btn-create {

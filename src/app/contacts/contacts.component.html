@@ -1,7 +1,22 @@
 
+    <mat-drawer-content class="mat-drawer-content-mobile">
+      <mat-form-field style="display:none;" appearance="fill">
+        
+        <mat-select #mode value="over">
+          
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="display:none;" appearance="fill">
+        
+        <mat-select #hasBackdrop value="true">
+        </mat-select>
+      </mat-form-field>
+      
+      <button class="toggle-btn" mat-raised-button (click)="drawer.toggle()">New contact <img src="./assets/img/userPlus.png" alt=""></button>
+    </mat-drawer-content>
   <div class="contact-container" *ngIf="user$ | async as user">
     <div (click)="showDetails(contact ['firstname'], contact['name'], contact['email'], contact['phone'], i, contact['color'])" class="contact-div" *ngFor="let contact of user.contacts, let i = index">
-      <div  class="contact-icon {{contact['color']}}">{{getFirstLetterOfFirstName(contact['firstname'])}} {{getFirstLetterOfSurname(contact['name'])}}</div>
+      <div  class="contact-icon {{contact['color']}}">{{getFirstLetterOfFirstName(contact['firstname'])}}{{getFirstLetterOfSurname(contact['name'])}}</div>
       <div style="display:flex; flex-direction: column; margin-left: 30px">
         <span class="name">{{contact['firstname']}} {{contact['name']}}</span>
         <span class="email">{{contact['email']}}</span>
@@ -46,11 +61,14 @@
                         <mat-radio-button class="green" value="green1"></mat-radio-button>
                         <mat-radio-button class="orange" value="orange1"></mat-radio-button>
                       </mat-radio-group>
-                      <div style="display:flex;margin-top: 30px;">
-                        <button  class="btn-cancel" mat-raised-button  type="button">
+                      <div class="btn-container">
+                        <button (click)="cancelForm()"  class="btn-cancel" mat-raised-button  type="button">
                             Cancel
                             <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="close"></mat-icon>
                         </button>
+                        <button (click)="drawer.toggle()" class="btn-cancel-mobile" mat-raised-button  type="button">
+                          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="close"></mat-icon>
+                      </button>
                         <button (click)="drawer.toggle()" class="btn-create" mat-raised-button  type="submit">
                             Create contact
                             <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="done"></mat-icon>
@@ -60,7 +78,7 @@
               
             </div>
         </mat-drawer>
-        <mat-drawer-content class="mat-drawer-content">
+        <mat-drawer-content class="mat-drawer-content-desktop">
           <mat-form-field style="display:none;" appearance="fill">
             
             <mat-select #mode value="over">

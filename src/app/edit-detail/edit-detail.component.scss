@@ -9,3 +9,12 @@
     justify-content: flex-end;
 }
 
+@media(max-width: 560px) {
+    .halfOfScreen {
+        width: 100% !important;
+
+    }
+    
+
+   
+}

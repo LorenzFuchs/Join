@@ -1,5 +1,6 @@
 h1 {
     font-size: 64px !important;
+    line-height: 58px;
 }
 
 .time-date {
@@ -122,6 +123,12 @@ h1 {
     }
 }
 
+.todo {
+    span{
+        padding: 5px;
+    }
+}
+
 .status {
     height: 190px;
     display: flex;
@@ -184,7 +191,7 @@ h1 {
 
 .summary {
     margin-left: 50px;
-    margin-top: 50px;
+    margin-top: 120px;
 }
 
 .task-status {
@@ -194,12 +201,14 @@ h1 {
     min-width: 300px;
     max-width: 921px;
     padding: 10px;
+    flex-wrap: wrap;
 }
 
 .font-status {
     font-size: 23px !important;
     color: #4589FF !important;
 }
+
 .ml-20 {
     margin-left: 20px;
 }
@@ -212,14 +221,15 @@ h1 {
     margin-top: 10px;
 }
 
-@media(max-width: 560px) {
-.ml-20 {
-    margin-left: unset;
-}
-.mt-10 {
-    margin-top: unset;
-}
-    
+@media(max-width: 784px) {
+    .ml-20 {
+        margin-left: unset;
+    }
+
+    .mt-10 {
+        margin-top: unset;
+    }
+
     .mt-30 {
         margin-top: unset;
     }
@@ -229,6 +239,7 @@ h1 {
         justify-content: center;
         margin-top: 20px;
     }
+
     h1 {
         display: none;
     }
@@ -237,7 +248,7 @@ h1 {
 
     .summary {
         margin-left: unset;
-        margin-top: unset;
+        margin-top: unset !important;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -259,6 +270,7 @@ h1 {
         padding-top: 10px;
         padding-bottom: 10px;
         flex-direction: unset;
+
         img {
             height: 50px !important;
             width: 50px !important;
@@ -286,6 +298,7 @@ h1 {
 
     .time {
         padding-left: 10px;
+
         img {
             height: 50px;
             width: 50px;
@@ -303,15 +316,18 @@ h1 {
             font-size: 15px !important;
         }
     }
+
     .status {
         height: 120px;
         width: 130px;
         margin: 10px;
+
         img {
             height: 50px !important;
             width: 50px !important;
         }
     }
+
     .font-status {
         font-size: 15px !important;
     }
@@ -320,54 +336,62 @@ h1 {
         margin-left: 20px;
     }
 
-  
-    
+
+
 }
 
 @media(max-height: 770px) {
 
     .task-status {
         margin: unset;
+        padding: 0;
     }
-    .status{
-       height: 80px;
-       width: 100px;
-       padding: 5px;
-       margin: 5px;
-       img{
-        height: 30px;
-        width: 30px;
-        
-       }
 
-       .ml-20 {
-        font-size: 24px !important;
-       }
+    .status {
+        height: 80px;
+        width: 100px;
+        padding: 5px;
+        margin: 5px;
+
+        img {
+            height: 30px;
+            width: 30px;
+
+        }
+
+        .ml-20 {
+            font-size: 24px !important;
+        }
     }
+
     .font-status {
         font-size: 12px !important;
     }
+
     .todo {
-        span{
+        span {
             font-size: 24px !important;
+            padding: 5px !important;
         }
-        
+
     }
 
     .time-date {
-        span{
+        span {
             font-size: 22px;
         }
     }
+
     .time {
-        div{
-            img{
+        div {
+            img {
                 height: 50px;
                 width: 50px;
             }
         }
     }
-    .first-container{
+
+    .first-container {
         padding-left: 10px;
         padding-right: 10px;
         margin-top: 0;
@@ -375,5 +399,29 @@ h1 {
 
     .status1 {
         margin-top: 10px !important;
+    }
+
+}
+
+@media(max-width: 947px) {
+    .task-status {
+        flex-wrap: wrap;
+
+    }
+
+    .status {
+        margin-top: 10px;
+    }
+
+
+}
+
+@media(max-width: 1288px) {
+    .first-container{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .status1 {
+        margin-top: 10px;
     }
 }

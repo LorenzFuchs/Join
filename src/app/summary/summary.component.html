@@ -10,7 +10,7 @@
                 <div class="time1" style="margin-top: 30px;"><span style="font-size: 23px; text-align: center;">Tasks urgent</span></div>
             </div>
             
-                <div style="padding-left: 10px;"><span style="line-height: 50px;">{{getCurrentDate()}}</span><br>
+                <div style="padding-left: 10px; padding-right: 10px;"><span style="line-height: 50px;">{{getCurrentDate()}}</span><br>
                     <div class="mt-30"><span class="deadline" style="font-size: 23px;">Upcoming Deadline</span></div>
                 </div>
             
@@ -18,7 +18,7 @@
         
         </div>
         <div [routerLink]="['/home/board']"  class="status1">
-            <div class="todo"><img src="./assets/img/BoardIcon.png"><span *ngIf="task$ | async as task" style="margin-left:20px;">{{task.todo.length}}</span></div>
+            <div class="todo"><img src="./assets/img/BoardIcon.png"><span *ngIf="task$ | async as task">{{task.todo.length}}</span></div>
             <div class="mt-10"><span class="font-status margin">Tasks to do</span></div>
         </div>
     </div>

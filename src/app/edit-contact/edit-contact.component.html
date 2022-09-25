@@ -1,6 +1,6 @@
 <div class="contact-details">
   <div style="display:flex; align-items: center">
-    <div class="contact-icon1 {{color}}">{{getFirstLetterOfFirstName(firstname)}} {{getFirstLetterOfSurname(name)}}</div>
+    <div class="contact-icon1 {{color}}">{{getFirstLetterOfFirstName(firstname)}}{{getFirstLetterOfSurname(name)}}</div>
     <h1 style="margin-left: 20px;margin-bottom: 0 !important; font-weight: 600;">{{firstname}} {{name}}</h1>
   </div>
   <div style="display:flex ; margin-top: 20px;">
@@ -24,8 +24,7 @@
       <h1 style="margin-top:20px ;">Edit contact</h1>
     </div>
     <div class="add-contact">
-      <div class="contact-icon {{color}}" *ngIf="user$ | async as user">{{getFirstLetterOfFirstName(firstname)}}
-        {{getFirstLetterOfSurname(name)}}</div>
+      <div class="contact-icon {{color}}" *ngIf="user$ | async as user">{{getFirstLetterOfFirstName(firstname)}}{{getFirstLetterOfSurname(name)}}</div>
       <form [formGroup]="contactDetails" (ngSubmit)="save(user)" *ngIf="user$ | async as user">
         <mat-form-field appearance="fill">
           <mat-label>First name</mat-label>
@@ -57,6 +56,9 @@
             Save
 
           </button>
+          <button (click)="drawer.toggle()" class="btn-cancel-mobile" mat-raised-button  type="button">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="close"></mat-icon>
+        </button>
         </div>
       </form>
 

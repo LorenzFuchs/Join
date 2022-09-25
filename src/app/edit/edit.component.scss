@@ -136,3 +136,13 @@ h1 {
     display: flex;
     align-items: center;
   }
+
+  @media(max-width: 560px) {
+    h1{
+      font-size: 23px;
+    }
+
+    .category {
+      margin-bottom: 0;
+    }
+  }
