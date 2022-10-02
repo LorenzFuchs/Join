@@ -79,6 +79,7 @@ export class EditDetailComponent implements OnInit {
    }
 
    choosePerson(person){
+    console.log(this.detail);
     
     
     if(this.persons.includes(person['firstname'])){

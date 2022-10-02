@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog, MatDialogRef, _closeDialogVia } from '@angular/material/dialog';
 import { EditDetailComponent } from '../edit-detail/edit-detail.component';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-edit',
@@ -11,11 +12,12 @@ import { EditDetailComponent } from '../edit-detail/edit-detail.component';
 export class EditComponent implements OnInit {
 item;
 i;
+user$ = this.usersService.currentUserProfile$;
 array;
 urgent = 'urgent1';
 medium = 'medium1';
 low = 'low1';
-  constructor(private firestore: AngularFirestore, public dialog: MatDialog, public dialogRef: MatDialogRef<EditComponent>) { }
+  constructor(private firestore: AngularFirestore, public dialog: MatDialog, public dialogRef: MatDialogRef<EditComponent>, private usersService: UserService) { }
 
   ngOnInit(): void {
     

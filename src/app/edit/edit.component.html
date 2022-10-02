@@ -5,5 +5,8 @@
 <div><span class="fw-400">{{item['description']}}</span></div>
 <div class="mt-15"><span class="fw-700"><b>Due date: </b></span><span class="fw-400">{{item['date']}}</span></div>
 <div class="mt-15" style="display:flex ;  align-items: center;"><span class="fw-700"><b>Priority: </b></span><div class="{{(item['urgency'])}} priority"><span>{{item['urgency']}}</span><img src="./assets/img/{{item['urgency']}}.png" ></div></div>
-<div class="mt-15"><span><b>Assigned To: </b></span><div class="assigned" *ngFor="let person of item['selectPerson']" ><div class="select-person {{person['color']}}"><span >{{getFirstLetterOfFirstName(person['firstname'])}} {{getFirstLetterOfSurname(person['name'])}}</span></div><div><span style="margin-left: 20px;" class="fw-400">{{person['firstname']}}{{person['name']}}</span></div></div></div>
-<div class="edit-button"><img (click)="editDetail(item)" src="./assets/img/edit.png"></div>
+<div class="mt-15"><span><b>Assigned To: </b></span><div class="assigned" *ngFor="let person of item['selectPerson']" ><div class="select-person {{person['color']}}"><span >{{getFirstLetterOfFirstName(person['firstname'])}} {{getFirstLetterOfSurname(person['name'])}}</span></div><div><span style="margin-left: 20px;" class="fw-400">{{person['firstname']}} {{person['name']}}</span></div></div></div>
+<div class="edit-button"><ng-container *ngIf="user$ | async as user; else guest"><img (click)="editDetail(item)" src="./assets/img/edit.png"></ng-container><ng-template #guest><button (click)="closeDialog()" routerLink="/login" class="btn-create" mat-raised-button type="submit">
+    To edit tasks, please login!
+    
+  </button></ng-template></div>

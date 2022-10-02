@@ -7,6 +7,21 @@
 color: white;
 font-size: 23px;
 margin-left: 12px;
+&:hover {
+  background-color: #1466f5;
+}
+}
+
+.btn-guest {
+  background: white;
+  color: #647188;
+  font-size: 23px;
+  margin-left: 12px;
+  border: 1px solid black;
+  &:hover {
+    color: #4589FF;
+    border: 1px solid #4589FF;
+  }
 }
 
 .sign-up-container {

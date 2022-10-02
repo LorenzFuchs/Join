@@ -1,5 +1,5 @@
 <div class="summary">
-    <h1>Hello, <span *ngIf="user$ | async as user">{{user.name}}</span></h1>
+    <h1>Hello, <ng-template #guest><span>Guest</span></ng-template> <span *ngIf="user$ | async as user ; else guest">{{user.name}}</span></h1>
 
     <div class="first-container">
 

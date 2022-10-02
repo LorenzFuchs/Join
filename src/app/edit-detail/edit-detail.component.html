@@ -19,6 +19,9 @@
                       <mat-option (click)="choosePerson(person)" *ngFor="let person of user.contacts" [value]="person">
                         {{person['firstname']}} {{person['name']}}
                       </mat-option>
+                      <mat-option (click)="choosePerson(person)" *ngFor="let person of detail.selectPerson" [value]="person">
+                        {{person['firstname']}} {{person['name']}}
+                      </mat-option>
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill">
